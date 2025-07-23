@@ -1,0 +1,25 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Pagar servicios",
+      "description": "Ir a pagar cuentas",
+      "completed": false,
+      "createdAt": "2025-07-20T10:30:00.000Z"
+    },
+    {
+      "id": 2,
+      "title": "Comprar alimentos",
+      "description": "Ir al super",
+      "completed": false,
+      "createdAt": "2025-07-20T10:31:00.000Z"
+    },
+    {
+      "id": 3,
+      "title": "Terminar web",
+      "description": "Cargar datos en la tienda",
+      "completed": false,
+      "createdAt": "2025-07-20T10:32:00.000Z"
+    }
+  ]
+}
