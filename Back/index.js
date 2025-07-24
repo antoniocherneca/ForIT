@@ -1,15 +1,20 @@
 import express from "express";
 import fs from "fs";
 import bodyParser from "body-parser";
+import { config } from "dotenv";
+
+config();
 
 const app = express();
-const PORT = 3000;
+console.log(process.env.PORT);
+const PORT = process.env.PORT || 3001;
+const DATABASE = process.env.DATABASE || "./db.json";
 
 app.use(bodyParser.json());
 
 const readData = () => {
   try {
-    const data = fs.readFileSync("./db.json");
+    const data = fs.readFileSync(DATABASE);
     return JSON.parse(data);
   } catch (error) {
     console.log(error);
@@ -41,12 +46,20 @@ app.post("/api/tasks", (req, res) => {
   try {
     const data = readData();
     const maxId = data.tasks[data.tasks.length - 1].id;
+
+    const thisMoment = new Date();
+    const offset = -3 * 60;
+    thisMoment.setMinutes(thisMoment.getMinutes() + offset);
+    const finalDate = thisMoment.toISOString();
+
     const newTask = {
       id: maxId + 1,
       title: req.body.title,
       description: req.body.description,
       completed: false,
+      createdAt: req.body.createdAt || finalDate,
     };
+
     data.tasks.push(newTask);
     writeData(data);
     res.json(newTask);
@@ -74,6 +87,7 @@ app.put("/api/tasks/:id", (req, res) => {
         req.body.completed !== undefined
           ? req.body.completed
           : data.tasks[taskIndex].completed,
+      createdAt: data.tasks[taskIndex].createdAt,
     };
 
     data.tasks[taskIndex] = updatedTask;
