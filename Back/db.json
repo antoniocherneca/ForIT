@@ -40,6 +40,13 @@
       "description": "Antes de dormir",
       "completed": false,
       "createdAt": "2025-07-23T21:18:03.595Z"
+    },
+    {
+      "id": 8,
+      "title": "Nueva tarea",
+      "description": "Probando carga de tareas",
+      "completed": false,
+      "createdAt": "2025-07-25T01:49:32.045Z"
     }
   ]
 }

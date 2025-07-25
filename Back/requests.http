@@ -5,8 +5,8 @@ POST http://localhost:3001/api/tasks HTTP/1.1
 Content-Type: application/json
 
 {
-  "title": "Ver una serie",
-  "description": "Antes de dormir",
+  "title": "Pagar servicios",
+  "description": "Ir a pagar cuentas",
   "completed": false
 }
 ###
@@ -16,8 +16,8 @@ Content-Type: application/json
 
 {
   "id": 6,
-  "title": "Bañarme",
-  "description": "Para relajar",
+  "title": "Cocinar",
+  "description": "Para cenar",
   "completed": false
 }
 ###

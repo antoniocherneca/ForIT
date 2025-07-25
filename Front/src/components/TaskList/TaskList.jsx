@@ -1,5 +1,7 @@
+import "./TaskList.css";
+
 const TaskList = () => {
-  return <h1>TaskList</h1>;
+  return <h2>Mis tareas</h2>;
 };
 
 export default TaskList;

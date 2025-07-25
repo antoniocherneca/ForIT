@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import fs from "fs";
 import bodyParser from "body-parser";
 import { config } from "dotenv";
@@ -6,11 +7,12 @@ import { config } from "dotenv";
 config();
 
 const app = express();
-console.log(process.env.PORT);
+
 const PORT = process.env.PORT || 3001;
 const DATABASE = process.env.DATABASE || "./db.json";
 
 app.use(bodyParser.json());
+app.use(cors());
 
 const readData = () => {
   try {
@@ -29,10 +31,6 @@ const writeData = (data) => {
   }
 };
 
-app.get("/", (req, res) => {
-  res.send("Bienvenido de nuevo!");
-});
-
 app.get("/api/tasks", (req, res) => {
   const data = readData();
   if (data.tasks.length > 0) {
@@ -45,7 +43,10 @@ app.get("/api/tasks", (req, res) => {
 app.post("/api/tasks", (req, res) => {
   try {
     const data = readData();
-    const maxId = data.tasks[data.tasks.length - 1].id;
+    let maxId = 0;
+    if (data.tasks.length > 0) {
+      maxId = data.tasks[data.tasks.length - 1].id;
+    }
 
     const thisMoment = new Date();
     const offset = -3 * 60;
