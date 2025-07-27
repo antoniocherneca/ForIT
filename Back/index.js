@@ -48,17 +48,17 @@ app.post("/api/tasks", (req, res) => {
       maxId = data.tasks[data.tasks.length - 1].id;
     }
 
-    const thisMoment = new Date();
+    /* const thisMoment = new Date();
     const offset = -3 * 60;
     thisMoment.setMinutes(thisMoment.getMinutes() + offset);
-    const finalDate = thisMoment.toISOString();
+    const finalDate = thisMoment.toISOString(); */
 
     const newTask = {
       id: maxId + 1,
       title: req.body.title,
       description: req.body.description,
       completed: false,
-      createdAt: req.body.createdAt || finalDate,
+      createdAt: req.body.createdAt || new Date(),
     };
 
     data.tasks.push(newTask);
@@ -66,7 +66,7 @@ app.post("/api/tasks", (req, res) => {
     res.json(newTask);
   } catch (error) {
     console.log(error);
-    res.send("Error al agregar la tarea");
+    res.status(400).send("Error al agregar la tarea");
   }
 });
 

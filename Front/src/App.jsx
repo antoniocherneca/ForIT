@@ -21,17 +21,17 @@ function App() {
               </li>
               <li className="nav-item">
                 <Link to="/taskform" className="nav-link text-white">
-                  Formulario de Tareas
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/taskitem" className="nav-link text-white">
-                  Tarea única
+                  Nueva Tarea
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/tasklist" className="nav-link text-white">
                   Lista de tareas
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/taskitem" className="nav-link text-white">
+                  Buscar Tarea
                 </Link>
               </li>
             </ul>
